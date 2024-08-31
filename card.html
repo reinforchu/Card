@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="cache-control" content="no-cache, no-store">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta name="expires" content="0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#00a2ce">
+		<meta name="description" content="Generate Card HTML Code.">
+		<meta name="keywords" content="Card,Generator">
+        <meta name="author" content="reinforchu">
+		<title>Card Generator</title>
+		<meta name="twitter:image:src" content="https://rein.jp/img/rein.png">
+        <meta name="twitter:site" content="@reinforchu">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Card Generator">
+        <meta name="twitter:description" content="Generate Card HTML Code.">
+        <meta property="og:image" content="https://rein.jp/img/rein.png">
+        <meta property="og:image:alt" content="Rein logo">
+        <meta property="og:site_name" content="Card Generator">
+        <meta property="og:type" content="object">
+        <meta property="og:title" content="Card Generator">
+        <meta property="og:url" content="https://rein.jp/tools/card/">
+        <meta property="og:description" content="Generate Card HTML Code.">
+        <style>
+            .x{
+                position: relative;
+            }
+            .x_card img {
+                object-fit: cover;
+                width: 400px;
+                height: 200px;
+                border-radius: 20px;
+            }
+            .x_card p {
+                position: absolute;
+                top: 75%;
+                right: 96%;
+                margin: 0;
+                color: white;
+                background: gray;
+                font-size: 12px;
+                line-height: 1;
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
+            .x_card a {
+                color: black;
+            }
+            .x_card a:hover {
+                color: black;
+            }
+            .x_card a:visited {
+                color: black;
+            }
+        </style>
+        <script>
+            function sample1() { // This function delete ok.
+                var x_url = new URL('https://reinforc.hu/');
+                document.getElementById('x_url').value = 'https://reinforc.hu/';
+                document.getElementById('x_title').value = 'Sample';
+                document.getElementById('x_desc').value = 'X Card Generation Tool.';
+                document.getElementById('x_img').value = 'https://reinforc.hu/img/reinforchu.png';
+                document.getElementById('x_alt').value = 'Sample image';
+                document.getElementById('x_type').value = 'summary_large_image';
+                document.getElementById('x_name').value = '@reinforchu';
+                x_preview();
+                x_code();
+            }
+            function sample2() { // This function delete ok.
+                var x_url = new URL('https://rein.jp/');
+                document.getElementById('x_url').value = 'https://rein.jp/';
+                document.getElementById('x_title').value = 'rein://lab.';
+                document.getElementById('x_desc').value = 'Cybersecurity R&D activists.';
+                document.getElementById('x_img').value = 'https://rein.jp/img/rein.png';
+                document.getElementById('x_alt').value = 'Logo';
+                document.getElementById('x_type').value = 'summary_large_image';
+                document.getElementById('x_name').value = '@ReinSecLab';
+                x_preview();
+                x_code();
+            }
+            function x_preview() {
+                var x_url = new URL(document.getElementById('x_url').value); // Issue: Self-XSS
+                document.getElementById('x_view_img_src').src = document.getElementById('x_img').value;
+                document.getElementById('x_view_title').textContent = document.getElementById('x_title').value;
+                document.getElementById('x_view_url').href = document.getElementById('x_url').value;
+                document.getElementById('x_view_url').textContent = 'From ' + x_url.hostname;
+            }
+            function x_code() {
+                x_card_tag = ''; // Empty
+                x_card_tag = x_card_tag + '<meta name="twitter:card" content="' + document.getElementById('x_type').value + '">\n';
+                x_card_tag = x_card_tag + '<meta name="twitter:site" content="' + document.getElementById('x_name').value + '">\n';
+                x_card_tag = x_card_tag + '<meta name="twitter:title" content="' + document.getElementById('x_title').value + '">\n';
+                x_card_tag = x_card_tag + '<meta name="twitter:description" content="' + document.getElementById('x_desc').value + '">\n';
+                x_card_tag = x_card_tag + '<meta name="twitter:image:src" content="' + document.getElementById('x_img').value + '">\n';
+                x_card_tag = x_card_tag + '<meta name="twitter:image:alt" content="' + document.getElementById('x_alt').value + '">\n';
+                document.getElementById('x_code').textContent = x_card_tag;
+            }
+            function x_reset(){
+                empty = ''; // Empty
+                document.getElementById('x_url').value = empty;
+                document.getElementById('x_title').value = empty;
+                document.getElementById('x_desc').value = empty;
+                document.getElementById('x_img').value = empty;
+                document.getElementById('x_alt').value = empty;
+                document.getElementById('x_type').value = 'summary_large_image';
+                document.getElementById('x_name').value = empty;
+                document.getElementById('x_view_img_src').src = '#';
+                document.getElementById('x_view_title').textContent = 'No data';
+                document.getElementById('x_view_url').href = empty;
+                document.getElementById('x_view_url').textContent = 'From No data';
+                document.getElementById('x_code').textContent = 'No contents.';
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Card Generator</h1>
+        <input type="button" value="Set Sample Data: 1" onclick="sample1();"><!-- This tag delete ok. -->
+        <input type="button" value="Set Sample Data: 2" onclick="sample2();"><!-- This tag delete ok. -->
+        <h2>X Card Form</h2>
+        <b>Link URL:</b><input type="text" value="" placeholder="e.g. https://example.com/" id="x_url"><br>
+        <b>Title:</b><input type="text" value="" placeholder="e.g. My blog site name" id="x_title"><br>
+        <b>Description:</b><input type="text" value="" placeholder="e.g. Infomation Technology tips." size="32" id="x_desc"><br>
+        <b>Image URL:</b><input type="text" value="" placeholder="e.g. https://example.com/img/logo.png" size="32" id="x_img"><b> * Absolute path required.</b><br>
+        <b>Image alt:</b><input type="text" value="" placeholder="Input alt description." maxlength="420" id="x_alt"><br>
+        <b>Card type:</b>
+        <select id="x_type">
+           <option>summary</option>
+           <option selected>summary_large_image</option>
+           <option>app</option>
+           <option>player</option>
+        </select>
+        <br>
+        <b>ScreenName:</b><input type="text" value="" placeholder="@your_name" id="x_name">
+        <br><br>
+        <input type="button" value="Preview" onclick="x_preview();">
+        <input type="button" value="Generate code" onclick="x_code();">
+        <input type="button" value="Clear data" onclick="x_reset();">
+        <h2>X Card Preview</h2>
+        <div class="x">
+            <div class="x_card">
+                <img src="#" id="x_view_img_src" alt="">
+                <p id="x_view_title">No data</p>
+                <br>
+                <a href="" id="x_view_url">From No data</a>
+            </div>
+        </div>
+        <p>* summary_large_image Type only.</p>
+        <h2>X Card Generate: HTML Source code</h2>
+        <small>&lt;head&gt;</small>
+        <pre id="x_code">No contents.</pre>
+        <small>&lt;/head&gt;</small>
+        <hr>
+        <p>Card Generator Version 1.0.0</p>
+        <p>Author: <a href="https://x.com/reinforchu">@reinforchu</a></p>
+    </body>
+</html>
