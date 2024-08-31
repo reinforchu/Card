@@ -25,96 +25,9 @@
         <meta property="og:title" content="Card Generator">
         <meta property="og:url" content="https://rein.jp/tools/card/">
         <meta property="og:description" content="Generate Card HTML Code.">
-        <style>
-            .x{
-                position: relative;
-            }
-            .x_card img {
-                object-fit: cover;
-                width: 400px;
-                height: 200px;
-                border-radius: 20px;
-            }
-            .x_card p {
-                position: absolute;
-                top: 75%;
-                right: 96%;
-                margin: 0;
-                color: white;
-                background: gray;
-                font-size: 12px;
-                line-height: 1;
-                padding: 5px 10px;
-                border-radius: 20px;
-            }
-            .x_card a {
-                color: black;
-            }
-            .x_card a:hover {
-                color: black;
-            }
-            .x_card a:visited {
-                color: black;
-            }
-        </style>
-        <script>
-            function sample1() { // This function delete ok.
-                var x_url = new URL('https://reinforc.hu/');
-                document.getElementById('x_url').value = 'https://reinforc.hu/';
-                document.getElementById('x_title').value = 'Sample';
-                document.getElementById('x_desc').value = 'X Card Generation Tool.';
-                document.getElementById('x_img').value = 'https://reinforc.hu/img/reinforchu.png';
-                document.getElementById('x_alt').value = 'Sample image';
-                document.getElementById('x_type').value = 'summary_large_image';
-                document.getElementById('x_name').value = '@reinforchu';
-                x_preview();
-                x_code();
-            }
-            function sample2() { // This function delete ok.
-                var x_url = new URL('https://rein.jp/');
-                document.getElementById('x_url').value = 'https://rein.jp/';
-                document.getElementById('x_title').value = 'rein://lab.';
-                document.getElementById('x_desc').value = 'Cybersecurity R&D activists.';
-                document.getElementById('x_img').value = 'https://rein.jp/img/rein.png';
-                document.getElementById('x_alt').value = 'Logo';
-                document.getElementById('x_type').value = 'summary_large_image';
-                document.getElementById('x_name').value = '@ReinSecLab';
-                x_preview();
-                x_code();
-            }
-            function x_preview() {
-                var x_url = new URL(document.getElementById('x_url').value); // Issue: Self-XSS
-                document.getElementById('x_view_img_src').src = document.getElementById('x_img').value;
-                document.getElementById('x_view_title').textContent = document.getElementById('x_title').value;
-                document.getElementById('x_view_url').href = document.getElementById('x_url').value;
-                document.getElementById('x_view_url').textContent = 'From ' + x_url.hostname;
-            }
-            function x_code() {
-                x_card_tag = ''; // Empty
-                x_card_tag = x_card_tag + '<meta name="twitter:card" content="' + document.getElementById('x_type').value + '">\n';
-                x_card_tag = x_card_tag + '<meta name="twitter:site" content="' + document.getElementById('x_name').value + '">\n';
-                x_card_tag = x_card_tag + '<meta name="twitter:title" content="' + document.getElementById('x_title').value + '">\n';
-                x_card_tag = x_card_tag + '<meta name="twitter:description" content="' + document.getElementById('x_desc').value + '">\n';
-                x_card_tag = x_card_tag + '<meta name="twitter:image:src" content="' + document.getElementById('x_img').value + '">\n';
-                x_card_tag = x_card_tag + '<meta name="twitter:image:alt" content="' + document.getElementById('x_alt').value + '">\n';
-                document.getElementById('x_code').textContent = x_card_tag;
-            }
-            function x_reset(){
-                empty = ''; // Empty
-                document.getElementById('x_url').value = empty;
-                document.getElementById('x_title').value = empty;
-                document.getElementById('x_desc').value = empty;
-                document.getElementById('x_img').value = empty;
-                document.getElementById('x_alt').value = empty;
-                document.getElementById('x_type').value = 'summary_large_image';
-                document.getElementById('x_name').value = empty;
-                document.getElementById('x_view_img_src').src = '#';
-                document.getElementById('x_view_title').textContent = 'No data';
-                document.getElementById('x_view_url').href = empty;
-                document.getElementById('x_view_url').textContent = 'From No data';
-                document.getElementById('x_code').textContent = 'No contents.';
-            }
-        </script>
+        <link rel="stylesheet" href="./style.css">
+        <script src="./card.js" defer></script>
+        <script src="./sample.js" defer></script><!-- This tag delete ok. -->
     </head>
     <body>
         <h1>Card Generator</h1>

@@ -1,0 +1,35 @@
+.x{
+    position: relative;
+}
+
+.x_card img {
+    object-fit: cover;
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.x_card p {
+    position: absolute;
+    top: 75%;
+    right: 96%;
+    margin: 0;
+    color: white;
+    background: gray;
+    font-size: 12px;
+    line-height: 1;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.x_card a {
+    color: black;
+}
+
+.x_card a:hover {
+    color: black;
+}
+
+.x_card a:visited {
+    color: black;
+}
